@@ -1,0 +1,66 @@
+{
+  "columns": [
+    {
+      "name": "Client_Num",
+      "description": "The client's transaction number"
+    },
+    {
+      "name": "Customer_Age",
+      "description": "The client's age"
+    },
+    {
+      "name": "Gender",
+      "description": "The client's gender"
+    },
+    {
+      "name": "Dependent_Count",
+      "description": "The number of people that the client supports financially with their card"
+    },
+    {
+      "name": "Education_Level",
+      "description": "The highest level of education that the client has received"
+    },
+    {
+      "name": "Marital_Status",
+      "description": "The client's marital status"
+    },
+    {
+      "name": "state_cd",
+      "description": "The short code of the state that the client resides in"
+    },
+    {
+      "name": "Zipcode",
+      "description": "The zip code of the place that the client resides in"
+    },
+    {
+      "name": "Car_Owner",
+      "description": "Indication to find out if the client owns a car or not"
+    },
+    {
+      "name": "House_Owner",
+      "description": "Indication to find out if the client owns a house or not"
+    },
+    {
+      "name": "Personal_loan",
+      "description": "Indication to find out if the client has personal loan or not"
+    },
+    {
+      "name": "contact",
+      "description": "The type of contact that the client has provided"
+    },
+    {
+      "name": "Customer_Job",
+      "description": "The job that client has"
+    },
+    {
+      "name": "Income",
+      "description": "The amount that the client earns"
+    },
+    {
+      "name": "Cust_Satisfaction_Score",
+      "description": "The satisfaction score that the client has provided for the service"
+    }
+  ],
+  "target" : "/home/ec2-user/deep-research-agent-workshop/2-real-world-agent/completed/data/ccReport/customer.csv"
+
+}

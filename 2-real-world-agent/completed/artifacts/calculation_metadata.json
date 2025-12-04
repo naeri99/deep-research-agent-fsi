@@ -1,0 +1,395 @@
+{
+  "calculations": [
+    {
+      "id": "calc_001",
+      "value": 10108.0,
+      "description": "총 고객 수",
+      "formula": "COUNT(DISTINCT Client_Num)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Client_Num"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 고객 수"
+    },
+    {
+      "id": "calc_002",
+      "value": 10108.0,
+      "description": "총 거래 건수",
+      "formula": "COUNT(*)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "all"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 거래 레코드 수"
+    },
+    {
+      "id": "calc_003",
+      "value": 7843382.23,
+      "description": "총 이자 수익",
+      "formula": "SUM(Interest_Earned)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Interest_Earned"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 이자 수익"
+    },
+    {
+      "id": "calc_004",
+      "value": 2950015.0,
+      "description": "총 연회비 수익",
+      "formula": "SUM(Annual_Fees)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Annual_Fees"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 연회비 수익"
+    },
+    {
+      "id": "calc_005",
+      "value": 10793397.23,
+      "description": "총 수익",
+      "formula": "SUM(Interest_Earned) + SUM(Annual_Fees)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Interest_Earned",
+        "Annual_Fees"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "이자 + 연회비"
+    },
+    {
+      "id": "calc_006",
+      "value": 1067.8074030470914,
+      "description": "고객당 평균 수익",
+      "formula": "총수익 / 총고객수",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Interest_Earned",
+        "Annual_Fees",
+        "Client_Num"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "고객당 평균 수익성"
+    },
+    {
+      "id": "calc_007",
+      "value": 44522013.0,
+      "description": "총 거래액",
+      "formula": "SUM(Total_Trans_Amt)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Trans_Amt"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 거래 금액"
+    },
+    {
+      "id": "calc_008",
+      "value": 655651.0,
+      "description": "총 거래 건수",
+      "formula": "SUM(Total_Trans_Vol)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Trans_Vol"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 거래 횟수"
+    },
+    {
+      "id": "calc_009",
+      "value": 4404.63128215275,
+      "description": "평균 거래액 (고객당)",
+      "formula": "AVG(Total_Trans_Amt)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Trans_Amt"
+      ],
+      "importance": "medium",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "고객당 평균 거래액"
+    },
+    {
+      "id": "calc_010",
+      "value": 64.86456272259596,
+      "description": "평균 거래 건수 (고객당)",
+      "formula": "AVG(Total_Trans_Vol)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Trans_Vol"
+      ],
+      "importance": "medium",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "고객당 평균 거래 횟수"
+    },
+    {
+      "id": "calc_011",
+      "value": 67.90504857004717,
+      "description": "건당 평균 거래액",
+      "formula": "총거래액 / 총거래건수",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Trans_Amt",
+        "Total_Trans_Vol"
+      ],
+      "importance": "medium",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "1회 거래당 평균 금액"
+    },
+    {
+      "id": "calc_012",
+      "value": 614.0,
+      "description": "연체 계좌 수",
+      "formula": "SUM(Delinquent_Acc)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Delinquent_Acc"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "연체 발생 계좌"
+    },
+    {
+      "id": "calc_013",
+      "value": 6.074396517609814,
+      "description": "연체율 (%)",
+      "formula": "(SUM(Delinquent_Acc) / COUNT(*)) * 100",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Delinquent_Acc"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 대비 연체 비율"
+    },
+    {
+      "id": "calc_014",
+      "value": 8635.642807677088,
+      "description": "평균 신용한도",
+      "formula": "AVG(Credit_Limit)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Credit_Limit"
+      ],
+      "importance": "medium",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "고객당 평균 신용한도"
+    },
+    {
+      "id": "calc_015",
+      "value": 0.27485081123862287,
+      "description": "평균 신용 이용률",
+      "formula": "AVG(Avg_Utilization_Ratio)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Avg_Utilization_Ratio"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "신용한도 대비 사용 비율"
+    },
+    {
+      "id": "calc_016",
+      "value": 11753503.0,
+      "description": "총 리볼빙 잔액",
+      "formula": "SUM(Total_Revolving_Bal)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Revolving_Bal"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 리볼빙 잔액"
+    },
+    {
+      "id": "calc_017",
+      "value": 5809.0,
+      "description": "30일 내 활성화 고객 수",
+      "formula": "SUM(Activation_30_Days)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Activation_30_Days"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "30일 내 카드 활성화"
+    },
+    {
+      "id": "calc_018",
+      "value": 57.469331222793826,
+      "description": "활성화율 (%)",
+      "formula": "(SUM(Activation_30_Days) / COUNT(*)) * 100",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Activation_30_Days"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 대비 활성화 비율"
+    },
+    {
+      "id": "calc_019",
+      "value": 3.189256034823902,
+      "description": "평균 고객 만족도",
+      "formula": "AVG(Cust_Satisfaction_Score)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Cust_Satisfaction_Score"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "고객 만족도 평균"
+    },
+    {
+      "id": "calc_020",
+      "value": 972936.0,
+      "description": "총 고객 획득 비용",
+      "formula": "SUM(Customer_Acq_Cost)",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Customer_Acq_Cost"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "전체 고객 획득 비용"
+    },
+    {
+      "id": "calc_021",
+      "value": 1009.3635377866582,
+      "description": "고객 획득 ROI (%)",
+      "formula": "((총수익 - 총획득비용) / 총획득비용) * 100",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Interest_Earned",
+        "Annual_Fees",
+        "Customer_Acq_Cost"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "투자 대비 수익률"
+    },
+    {
+      "id": "calc_card_01",
+      "value": 9214.0,
+      "description": "Blue 카드 고객 수",
+      "formula": "COUNT(Client_Num WHERE Card_Category='Blue')",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Client_Num",
+        "Card_Category"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "Blue 카드 보유 고객"
+    },
+    {
+      "id": "calc_card_amt_01",
+      "value": 36957875.0,
+      "description": "Blue 카드 총 거래액",
+      "formula": "SUM(Total_Trans_Amt WHERE Card_Category='Blue')",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Trans_Amt",
+        "Card_Category"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "Blue 카드 거래액"
+    },
+    {
+      "id": "calc_card_02",
+      "value": 188.0,
+      "description": "Gold 카드 고객 수",
+      "formula": "COUNT(Client_Num WHERE Card_Category='Gold')",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Client_Num",
+        "Card_Category"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "Gold 카드 보유 고객"
+    },
+    {
+      "id": "calc_card_amt_02",
+      "value": 2024078.0,
+      "description": "Gold 카드 총 거래액",
+      "formula": "SUM(Total_Trans_Amt WHERE Card_Category='Gold')",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Trans_Amt",
+        "Card_Category"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "Gold 카드 거래액"
+    },
+    {
+      "id": "calc_card_03",
+      "value": 67.0,
+      "description": "Platinum 카드 고객 수",
+      "formula": "COUNT(Client_Num WHERE Card_Category='Platinum')",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Client_Num",
+        "Card_Category"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "Platinum 카드 보유 고객"
+    },
+    {
+      "id": "calc_card_amt_03",
+      "value": 953314.0,
+      "description": "Platinum 카드 총 거래액",
+      "formula": "SUM(Total_Trans_Amt WHERE Card_Category='Platinum')",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Trans_Amt",
+        "Card_Category"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "Platinum 카드 거래액"
+    },
+    {
+      "id": "calc_card_04",
+      "value": 639.0,
+      "description": "Silver 카드 고객 수",
+      "formula": "COUNT(Client_Num WHERE Card_Category='Silver')",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Client_Num",
+        "Card_Category"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "Silver 카드 보유 고객"
+    },
+    {
+      "id": "calc_card_amt_04",
+      "value": 4586746.0,
+      "description": "Silver 카드 총 거래액",
+      "formula": "SUM(Total_Trans_Amt WHERE Card_Category='Silver')",
+      "source_file": "./artifacts/integrated_data.csv",
+      "source_columns": [
+        "Total_Trans_Amt",
+        "Card_Category"
+      ],
+      "importance": "high",
+      "timestamp": "2025-12-01 01:31:51",
+      "verification_notes": "Silver 카드 거래액"
+    }
+  ]
+}
