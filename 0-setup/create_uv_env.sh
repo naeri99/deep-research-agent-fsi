@@ -33,11 +33,11 @@ usage() {
     echo ""
     echo "예시:"
     echo "  $0 myproject"
-    echo "  $0 myproject 3.11"
+    echo "  $0 myproject 3.12"
     echo ""
     echo "옵션:"
     echo "  환경이름     : 생성할 환경의 이름 (필수)"
-    echo "  python버전   : 사용할 Python 버전 (선택, 기본값: 3.11)"
+    echo "  python버전   : 사용할 Python 버전 (선택, 기본값: 3.12)"
     exit 1
 }
 
@@ -69,12 +69,39 @@ if [ -d ".venv" ]; then
     print_success "기존 가상환경이 제거되었습니다."
 fi
 
-# UV 설치 확인
+install_uv() {
+    print_info "UV를 설치합니다..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+    
+    if [ -f "$HOME/.local/bin/env" ]; then
+        source "$HOME/.local/bin/env"
+    fi
+    
+    if command -v uv &> /dev/null; then
+        print_success "UV가 성공적으로 설치되었습니다!"
+        uv --version
+    else
+        print_error "UV 설치에 실패했습니다."
+        print_info "수동 설치: curl -LsSf https://astral.sh/uv/install.sh | sh"
+        return 1 2>/dev/null || exit 1
+    fi
+}
+
 if ! command -v uv &> /dev/null; then
-    print_error "UV가 설치되어 있지 않습니다."
-    print_info "설치 방법: curl -LsSf https://astral.sh/uv/install.sh | sh"
-    exit 1
+    print_warning "UV가 설치되어 있지 않습니다."
+    read -p "UV를 자동으로 설치하시겠습니까? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        install_uv || exit 1
+    else
+        print_error "UV가 필요합니다."
+        print_info "설치 방법: curl -LsSf https://astral.sh/uv/install.sh | sh"
+        return 1 2>/dev/null || exit 1
+    fi
 fi
+
+
 
 # 1. Python 버전 설정
 print_info "Python $PYTHON_VERSION 설정 중..."
