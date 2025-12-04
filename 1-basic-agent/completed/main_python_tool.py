@@ -8,7 +8,7 @@ agent_name = "toy_agent"
 agent = strands_utils.get_agent(
     agent_name=agent_name,
     system_prompts=apply_prompt_template(prompt_name=agent_name, prompt_context={"AGENT_NAME": agent_name}),
-    agent_type="claude-sonnet-3-7", # 사용할 LLM 모델 (고성능 추론) 
+    agent_type="claude-sonnet-4", # 사용할 LLM 모델 (고성능 추론) 
     enable_reasoning=False, # 추론 기능 비활성화 (빠른 응답) 
     prompt_cache_info=(False, None), # 프롬프트 캐싱 비활성화 (False, None), 활성화 시 (True, "default") 
     streaming=True, # 실시간 응답 스트리밍 활성화
