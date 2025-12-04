@@ -135,9 +135,14 @@ import matplotlib.font_manager as fm
 import lovelyplots  # Required - DO NOT omit
 
 # Apply Korean font universally
-plt.rcParams['font.family'] = ['NanumGothic']
+font_path = '/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc'
+fm.fontManager.addfont(font_path)
+plt.rcParams['font.family'] = [fm.FontProperties(fname=font_path).get_name()]
 plt.rcParams['axes.unicode_minus'] = False
-korean_font = fm.FontProperties(family='NanumGothic')
+
+# Noto Sans CJK 폰트로 FontProperties 생성
+korean_font = fm.FontProperties(fname=font_path)
+
 
 # PDF-compatible defaults
 plt.rcParams['figure.figsize'] = [6, 4]
@@ -224,9 +229,14 @@ import matplotlib.font_manager as fm
 import lovelyplots  # Required - DO NOT omit
 
 # [MANDATORY] Font initialization - Execute this FIRST
-plt.rcParams['font.family'] = ['NanumGothic']
+font_path = '/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc'
+fm.fontManager.addfont(font_path)
+plt.rcParams['font.family'] = [fm.FontProperties(fname=font_path).get_name()]
 plt.rcParams['axes.unicode_minus'] = False
-korean_font = fm.FontProperties(family='NanumGothic')
+
+# Noto Sans CJK 폰트로 FontProperties 생성
+korean_font = fm.FontProperties(fname=font_path)
+
 
 # [MANDATORY] PDF-compatible defaults
 plt.rcParams['figure.figsize'] = [6, 4]
@@ -286,8 +296,14 @@ Avoid anti-patterns:
 
 *Example 1: Pie Chart with Korean Font*
 ```python
-plt.rcParams['font.family'] = ['NanumGothic']
-korean_font = fm.FontProperties(family='NanumGothic')
+font_path = '/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc'
+fm.fontManager.addfont(font_path)
+plt.rcParams['font.family'] = [fm.FontProperties(fname=font_path).get_name()]
+plt.rcParams['axes.unicode_minus'] = False
+
+# Noto Sans CJK 폰트로 FontProperties 생성
+korean_font = fm.FontProperties(fname=font_path)
+
 
 fig, ax = plt.subplots(figsize=(12, 7.2), dpi=200)
 wedges, texts, autotexts = ax.pie(values, labels=categories, autopct='%1.1f%%',
@@ -302,8 +318,14 @@ ax.legend(prop=korean_font, fontsize=10)
 # [MANDATORY] Initialize font first
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
-plt.rcParams['font.family'] = ['NanumGothic']
-korean_font = fm.FontProperties(family='NanumGothic')
+font_path = '/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc'
+fm.fontManager.addfont(font_path)
+plt.rcParams['font.family'] = [fm.FontProperties(fname=font_path).get_name()]
+plt.rcParams['axes.unicode_minus'] = False
+
+# Noto Sans CJK 폰트로 FontProperties 생성
+korean_font = fm.FontProperties(fname=font_path)
+
 
 fig, ax = plt.subplots(figsize=(9.6, 6), dpi=200)
 bars = ax.bar(categories, values, color='#ff9999')
@@ -325,8 +347,14 @@ for bar, value in zip(bars, values):
 # [MANDATORY] Initialize font first
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
-plt.rcParams['font.family'] = ['NanumGothic']
-korean_font = fm.FontProperties(family='NanumGothic')
+font_path = '/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc'
+fm.fontManager.addfont(font_path)
+plt.rcParams['font.family'] = [fm.FontProperties(fname=font_path).get_name()]
+plt.rcParams['axes.unicode_minus'] = False
+
+# Noto Sans CJK 폰트로 FontProperties 생성
+korean_font = fm.FontProperties(fname=font_path)
+
 
 fig, ax = plt.subplots(figsize=(7.2, 4.8), dpi=200)
 ax.plot(x_data, y_data, marker='o', linewidth=2.5, markersize=8)
@@ -684,8 +712,13 @@ import matplotlib.font_manager as fm
 import lovelyplots
 
 # Initialize font
-korean_font = fm.FontProperties(family='NanumGothic')
-plt.rcParams['font.family'] = ['NanumGothic']
+font_path = '/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc'
+fm.fontManager.addfont(font_path)
+plt.rcParams['font.family'] = [fm.FontProperties(fname=font_path).get_name()]
+plt.rcParams['axes.unicode_minus'] = False
+
+# Noto Sans CJK 폰트로 FontProperties 생성
+korean_font = fm.FontProperties(fname=font_path)
 
 # Load data
 df = pd.read_csv('data.csv')
@@ -762,9 +795,14 @@ track_calculation("calc_001", category_sales.sum(), "Total sales",
                  "SUM(Amount)", "./data/sales.csv", ["Amount"], "high")
 
 # Visualization
-plt.rcParams['font.family'] = ['NanumGothic']
+font_path = '/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc'
+fm.fontManager.addfont(font_path)
+plt.rcParams['font.family'] = [fm.FontProperties(fname=font_path).get_name()]
 plt.rcParams['axes.unicode_minus'] = False
-korean_font = fm.FontProperties(family='NanumGothic')
+
+# Noto Sans CJK 폰트로 FontProperties 생성
+korean_font = fm.FontProperties(fname=font_path)
+
 
 fig, ax = plt.subplots(figsize=(9.6, 6), dpi=200)
 ax.bar(category_sales.index, category_sales.values, color='#ff9999')
@@ -828,8 +866,14 @@ df['Date'] = pd.to_datetime(df['Date'])
 monthly_sales = df.groupby(df['Date'].dt.to_period('M'))['Amount'].sum()
 
 # Create chart with data labels
-plt.rcParams['font.family'] = ['NanumGothic']
-korean_font = fm.FontProperties(family='NanumGothic')
+font_path = '/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc'
+fm.fontManager.addfont(font_path)
+plt.rcParams['font.family'] = [fm.FontProperties(fname=font_path).get_name()]
+plt.rcParams['axes.unicode_minus'] = False
+
+# Noto Sans CJK 폰트로 FontProperties 생성
+korean_font = fm.FontProperties(fname=font_path)
+
 
 fig, ax = plt.subplots(figsize=(7.2, 4.8), dpi=200)
 ax.plot(range(len(monthly_sales)), monthly_sales.values, marker='o', linewidth=2.5, markersize=8)
