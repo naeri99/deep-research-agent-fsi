@@ -1,3 +1,22 @@
+"""
+strands_basic.py
+
+Strands Agents SDK를 사용하여 LLM 모델 직접 호출
+"""
+
+import argparse
+from strands import Agent
+import boto3
+import json
+from strands.models import BedrockModel
+import asyncio
+
+"""
+strands_basic.py
+
+Strands Agents SDK를 사용하여 LLM 모델 직접 호출
+"""
+
 import argparse
 from strands import Agent
 import boto3
@@ -6,11 +25,13 @@ from strands.models import BedrockModel
 import asyncio
 
 
+
 bedrock_model = BedrockModel(
     model_id="global.anthropic.claude-sonnet-4-20250514-v1:0",
     region_name="us-west-2",
     temperature=0.3
 )
+
 
 agent = Agent(
     model=bedrock_model,
@@ -19,6 +40,7 @@ agent = Agent(
                       사용자의 금융 관련 질문을 할경우 
                       정확하고 이해하기 쉽게 답변해주세요."""
     )
+
 
 
 async def run_agent(user_input):
@@ -31,7 +53,7 @@ async def run_agent(user_input):
 
 
 
-# Python 스크립트에서 실행
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AI Agent CLI")
     parser.add_argument("query", help="질문 내용")
