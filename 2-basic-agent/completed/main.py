@@ -15,12 +15,7 @@ agent = strands_utils.get_agent(
     tools=[python_repl_tool, bash_tool]
 )
 
-if __name__ == "__main__":
-
-    async def run_streaming():
-        async for event in strands_utils.process_streaming_response_yield(
-            agent=agent,
-            message= """
+planner = """
                 ## 체크리스트
                 ### 1. 사전 준비
                 - [ ] ./artifacts 디렉토리 생성
@@ -39,6 +34,7 @@ if __name__ == "__main__":
                 - [ ] 고객 그룹별 특성 분석 수행
                 - [ ] 주요 패턴 및 인사이트 도출
                 - [ ] 세그먼트별 통계 생성
+                - [ ] 분석결과를 ./artifacts/analysis.txt로 만들어주세요
 
                 각 작업 완료 후 [x]로 표시하고 다음 작업으로 진행하세요.
 
@@ -46,13 +42,21 @@ if __name__ == "__main__":
                 - customer.csv는 식별화 전 원본 데이터이므로 절대 데이터 분석 금지
                 - 분석은 반드시 비식별화가 완료된 customer_filtered.csv로만 수행
                 """
-                ,
+
+if __name__ == "__main__":
+
+    async def run_streaming():
+        async for event in strands_utils.process_streaming_response_yield(
+            agent=agent,
+            message= planner,
             agent_name=agent_name,
             source=agent_name
         ):
             strands_utils.process_event_for_display(event)
 
     asyncio.run(run_streaming())
+
+
 
 
 
