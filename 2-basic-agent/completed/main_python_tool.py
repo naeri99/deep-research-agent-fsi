@@ -2,6 +2,7 @@ import asyncio
 from utils.strands_sdk_utils import strands_utils
 from prompts.template import apply_prompt_template
 from tools import python_repl_tool, bash_tool
+import argparse
 
 agent_name = "toy_agent"
 
@@ -16,12 +17,14 @@ agent = strands_utils.get_agent(
 )
 
 if __name__ == "__main__":
-    user_input = "Hello world 를 프린팅하는 파이썬 코드를 작성하고 실행시켜 줄래?"
+    parser = argparse.ArgumentParser(description="Strands Agent CLI")
+    parser.add_argument("user_input", help="사용자 질의 내용")
+    args = parser.parse_args()
 
     async def run_streaming():
         async for event in strands_utils.process_streaming_response_yield(
             agent=agent,
-            message=user_input,
+            message=args.user_input,
             agent_name=agent_name,
             source=agent_name
         ):

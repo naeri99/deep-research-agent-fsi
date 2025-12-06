@@ -1,0 +1,77 @@
+{
+  "columns": [
+    {
+      "name": "client_Num",
+      "description": "The client's transaction number"
+    },
+    {
+      "name": "card_Category",
+      "description": "The type of card that the client used"
+    },
+    {
+      "name": "Annual_Fees",
+      "description": "The fees that the client paid for the card annually"
+    },
+    {
+      "name": "Activation_30_Days",
+      "description": "Binary indication of whether the client activated their card within 30 days or not"
+    },
+    {
+      "name": "Customer_Acq_Cost",
+      "description": "The amount that went towards acquiring the client"
+    },
+    {
+      "name": "Week_Start_Date",
+      "description": "The date of the first day of each week of the year"
+    },
+    {
+      "name": "Week_Num",
+      "description": "The rolling count of the number of weeks"
+    },
+    {
+      "name": "Qtr",
+      "description": "Indicates the quarter of the year"
+    },
+    {
+      "name": "current_year",
+      "description": "The operation year"
+    },
+    {
+      "name": "Credit_Limit",
+      "description": "The amount limit of the client's card"
+    },
+    {
+      "name": "Total_Revolving_Bal",
+      "description": "The balance amount that carries over from one month to the next month"
+    },
+    {
+      "name": "Total_Trans_Amt",
+      "description": "The amount that has been transacted by the client"
+    },
+    {
+      "name": "Total_Trans_Vol",
+      "description": "The number of times that the client has transacted from their card"
+    },
+    {
+      "name": "Avg_Utilization_Ratio",
+      "description": "The ratio of the amount of revolving credit and the total available credit to the client"
+    },
+    {
+      "name": "Use_Chip",
+      "description": "Indicates what type of method the client used for their card"
+    },
+    {
+      "name": "Exp_Type",
+      "description": "The type of bills that the client used their card for"
+    },
+    {
+      "name": "Interest_Earned",
+      "description": "The amount of interest that the company earned through the client's card"
+    },
+    {
+      "name": "Delinquent_Acc",
+      "description": "Binary indication that flags an account if a payment is not paid for 30 days or more"
+    }
+  ],
+  "target" : "/home/ec2-user/deep-research-agent-workshop/2-real-world-agent/completed/data/ccReport/credit_card.csv"
+}
