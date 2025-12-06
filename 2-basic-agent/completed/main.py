@@ -29,6 +29,7 @@ if __name__ == "__main__":
                 - [ ] /home/ec2-user/workshop/2-basic-agent/labs/data/ccReport/customer.csv 파일 로드
                 - [ ] Client_Num 컬럼 비식별화 처리
                 - 비식별화 규칙: `df['Client_Num'] = df['Client_Num'].map(lambda x: '*' * len(str(x)))`
+                - 비식별화 처리 전 Client_Num 샘플같은 것 절대로 보여주지 않기
                 - 모든 Client_Num 값을 동일 길이의 '*'로 변환
                 - [ ] 비식별화 완료된 데이터를 ./artifacts/customer_filtered.csv로 저장
                 - [ ] 원본 customer.csv 파일은 분석하지 않고 즉시 비식별화 처리만 수행
