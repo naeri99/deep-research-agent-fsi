@@ -2,7 +2,6 @@ import asyncio
 from utils.strands_sdk_utils import strands_utils
 from prompts.template import apply_prompt_template
 from tools import python_repl_tool, bash_tool
-import argparse
 
 agent_name = "toy_agent"
 
@@ -17,27 +16,34 @@ agent = strands_utils.get_agent(
 )
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Strands Agent CLI")
-    parser.add_argument("user_input", help="사용자 질의 내용")
-    args = parser.parse_args()
 
     async def run_streaming():
         async for event in strands_utils.process_streaming_response_yield(
             agent=agent,
             message= """
                 ## 체크리스트
-                - [ ] /home/ec2-user/workshop/2-basic-agent/labs/data/ccReport 안에 있는 customer.csv 파일 로드 및 비식별화한 후 비식별화가 완료된 파일을 ./artifacts에 customer_filtered.csv로 저장해줘.
+                ### 1. 사전 준비
+                - [ ] ./artifacts 디렉토리 생성
 
-                ## 비식별화 규칙을 활용해서 변경해줘
-                - Client_Num 컬럼의 모든 값을 '*'로 변환
-                - df['Client_Num'] = df['Client_Num'].map(lambda x: '*' * len(str(x)))
+                ### 2. 데이터 비식별화 (중요: 원본 데이터 분석 금지)
+                - [ ] /home/ec2-user/workshop/2-basic-agent/labs/data/ccReport/customer.csv 파일 로드
+                - [ ] Client_Num 컬럼 비식별화 처리
+                - 비식별화 규칙: `df['Client_Num'] = df['Client_Num'].map(lambda x: '*' * len(str(x)))`
+                - 모든 Client_Num 값을 동일 길이의 '*'로 변환
+                - [ ] 비식별화 완료된 데이터를 ./artifacts/customer_filtered.csv로 저장
+                - [ ] 원본 customer.csv 파일은 분석하지 않고 즉시 비식별화 처리만 수행
 
-                ## 고객 세그먼트 분석 포함 사항
-                - 고객 그룹별 특성 분석
-                - 주요 패턴 및 인사이트
-                - 세그먼트별 통계
+                ### 3. 고객 세그먼트 분석 (customer_filtered.csv 기반)
+                - [ ] customer_filtered.csv 파일 로드
+                - [ ] 고객 그룹별 특성 분석 수행
+                - [ ] 주요 패턴 및 인사이트 도출
+                - [ ] 세그먼트별 통계 생성
 
                 각 작업 완료 후 [x]로 표시하고 다음 작업으로 진행하세요.
+
+                **주의사항:**
+                - customer.csv는 식별화 전 원본 데이터이므로 절대 데이터 분석 금지
+                - 분석은 반드시 비식별화가 완료된 customer_filtered.csv로만 수행
                 """
                 ,
             agent_name=agent_name,
@@ -46,6 +52,9 @@ if __name__ == "__main__":
             strands_utils.process_event_for_display(event)
 
     asyncio.run(run_streaming())
+
+
+
 
 
 
