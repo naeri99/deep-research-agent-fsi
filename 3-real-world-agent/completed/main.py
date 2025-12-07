@@ -119,8 +119,8 @@ if __name__ == "__main__":
             나는 옥탱크 뱅크의 데이터 분석가야. 우리 은행의 카드 거래 데이터를 분석하고 있어. 데이터의 종류는 고객 카드 거래 이력 데이터, 가맹점별 거래 데이터야.
             고객 거래 패턴과 함께 고객 세그먼트 분석, 가맹점 분석 보고서를 docx로 작성해줘.
             보고서를 작성할 때는 다음 내용들을 포함해서 작성해.
-            1/ '/home/ec2-user/deep-research-agent-workshop/2-real-world-agent/completed/data/ccReport/card_descriptions.json' 파일을 읽고 데이터에 대해 이해해줘 
-            2/ '/home/ec2-user/deep-research-agent-workshop/2-real-world-agent/completed/data/ccReport/customer_description.json' 파일을 읽고 데이터에 대해 이해해줘 
+            1/ '/home/ec2-user/workshop/3-real-world-agent/completed/data/ccReport/card_descriptions.json' 파일을 읽고 데이터에 대해 이해해줘 
+            2/ '/home/ec2-user/workshop/3-real-world-agent/completed/data/ccReport/customer_description.json' 파일을 읽고 데이터에 대해 이해해줘 
             3/ 1번과 2번의 데이터를 코드를 통해 결합 할수 있는 방법에 대해 고민해줘. 그리고 결합된 데이터의 구조를 미리 예상해줘
             4/ 통합된 데이터 구조를 기반으로 분석할수 있는 대상을 작성해줘. 그리고 plan을 만들어줘
             5/ 통합 분석한 내용을 docx 리포트로 작성해줘. 각각의 json 파일 안에 target에 데이터 위치를 포함하고 있어"
