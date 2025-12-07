@@ -1,6 +1,3 @@
-
-
-
 """
 Entry point script for the Strands Agent Demo.
 """
