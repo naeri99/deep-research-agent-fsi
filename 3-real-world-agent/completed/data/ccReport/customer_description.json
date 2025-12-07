@@ -61,6 +61,6 @@
       "description": "The satisfaction score that the client has provided for the service"
     }
   ],
-  "target" : "/home/ec2-user/deep-research-agent-workshop/2-real-world-agent/completed/data/ccReport/customer.csv"
+  "target" : "/home/ec2-user/workshop/3-real-world-agent/completed/data/ccReport/customer.csv"
 
 }
