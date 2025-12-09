@@ -10,7 +10,7 @@ logger.setLevel(logging.INFO)
 
 TOOL_SPEC = {
     "name": "glue_bigdata_tool",
-    "description": "Use this to execute PySpark code on AWS Glue for big data analysis and calculation. The code should use PySpark/Glue syntax. Include S3 paths directly in your code (e.g., spark.read.csv('s3://bucket/path/file.csv')). If you want to see the output of a value, you should print it out with `print(...)`. This is visible to the user.",
+    "description": "Use this to execute PySpark code on AWS Glue for big data analysis and calculation when dealing with large datasets (more than 500 MB). The code should use PySpark/Glue syntax. Include S3 paths directly in your code (e.g., spark.read.csv('s3://bucket/path/file.csv')). If you want to see the output of a value, you should print it out with `print(...)`. This is visible to the user",
     "inputSchema": {
         "json": {
             "type": "object",
@@ -56,7 +56,7 @@ class GlueSparkClient:
         except Exception as e:
             raise Exception(f"Failed to get role from instance profile: {e}")
 
-    def create_or_reuse_session(self, session_name='spark-session-second'):
+    def create_or_reuse_session(self, session_name='spark-session-third'):
         try:
             response = self.glue.get_session(Id=session_name)
             state = response['Session']['Status']
@@ -88,6 +88,7 @@ class GlueSparkClient:
             if 'AlreadyExistsException' in str(e):
                 print(f"{Colors.YELLOW}[DEBUG] Session already exists, reusing it{Colors.END}")
                 self.session_id = session_name
+                print(self.session_id)
             else:
                 raise
 
@@ -170,7 +171,7 @@ def handle_glue_bigdata_tool(
         if glue_client is None:
             print(f"{Colors.BLUE}[DEBUG] Creating new Glue client{Colors.END}")
             glue_client = GlueSparkClient()
-            glue_client.create_or_reuse_session('bigdata-analysis-session')
+            glue_client.create_or_reuse_session('bigdata-analysis-session-two')
 
         # Execute code
         print(f"{Colors.BLUE}[DEBUG] Executing code on Glue session{Colors.END}")

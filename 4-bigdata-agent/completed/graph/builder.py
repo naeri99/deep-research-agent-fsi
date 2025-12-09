@@ -64,6 +64,8 @@ class StreamableGraph:
         
         yield {"type": "workflow_complete", "message": "All events processed through global queue"}
 
+
+
 def build_graph():
     """Build and return the agent workflow graph with streaming capability."""
     builder = GraphBuilder()

@@ -32,6 +32,8 @@ RESPONSE_FORMAT = "Response from {}:\n\n<response>\n{}\n</response>\n\n*Please e
 FULL_PLAN_FORMAT = "Here is full plan :\n\n<full_plan>\n{}\n</full_plan>\n\n*Please consider this to select the next step.*"
 CLUES_FORMAT = "Here is clues from {}:\n\n<clues>\n{}\n</clues>\n\n"
 
+
+
 def should_handoff_to_planner(_):
     """Check if coordinator requested handoff to planner."""
 
@@ -47,6 +49,7 @@ def should_handoff_to_planner(_):
             return 'handoff_to_planner' in message
 
     return False
+
 
 async def coordinator_node(task=None, **kwargs):
     
@@ -99,6 +102,8 @@ async def coordinator_node(task=None, **kwargs):
     # Return response only
     return response
 
+
+
 async def planner_node(task=None, **kwargs):
 
     """Planner node that generates detailed plans for task execution."""
@@ -124,8 +129,8 @@ async def planner_node(task=None, **kwargs):
         streaming=True,
     )
 
-    messages = shared_state["messages"]
-    message = messages[-1]["content"][-1]["text"]
+    full_plan, messages = shared_state.get("full_plan", ""), shared_state["messages"]
+    message = '\n\n'.join([messages[-1]["content"][-1]["text"], FULL_PLAN_FORMAT.format(full_plan)])
 
     # Process streaming response and collect text in one pass
     full_text = ""
@@ -144,6 +149,8 @@ async def planner_node(task=None, **kwargs):
     # Return response only
     return response
 
+
+
 async def supervisor_node(task=None, **kwargs):
     """Supervisor node that decides which agent should act next."""
     log_node_start("Supervisor")
@@ -160,7 +167,7 @@ async def supervisor_node(task=None, **kwargs):
     agent = strands_utils.get_agent(
         agent_name="supervisor",
         system_prompts=apply_prompt_template(prompt_name="supervisor", prompt_context={}),
-        agent_type="claude-sonnet-4-5", # claude-sonnet-3-5-v-2, claude-sonnet-3-7
+        agent_type="claude-sonnet-4", # claude-sonnet-3-5-v-2, claude-sonnet-3-7
         enable_reasoning=False,
         prompt_cache_info=(True, "default"),  # enable prompt caching for reasoning agent
         tools=[coder_agent_tool, reporter_agent_tool, tracker_agent_tool, validator_agent_tool],  # Add coder, reporter, tracker and validator agents as tools

@@ -50,6 +50,7 @@ def _print_conversation_history():
     else:
         print("No conversation history found")
 
+
 async def graph_streaming_execution(payload):
     """Execute full graph streaming workflow using new graph.stream_async method"""
 
@@ -81,6 +82,8 @@ async def graph_streaming_execution(payload):
     _print_conversation_history()
     print("=== Queue-Only Event Stream Complete ===")
 
+
+
 if __name__ == "__main__":
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Strands Agent Demo')
@@ -99,18 +102,6 @@ if __name__ == "__main__":
         }
     else:
         # Full comprehensive analysis query (main version):
-        # payload = {
-        #     "user_query": """
-        #                     나는 Yummy food의 마케팅 담당자야. 우리회사에서 만든 식품을 여러 매체에 광고하고 있어. 데이터의 종류는 소비자 구매 이력이 있는 데이터, 매체별 광고 데이터야.
-        #                     소비자 구매 패턴과 함께 소비자 분석, 광고 분석 보고서를 docx로 작성해줘.
-        #
-        #                     보고서를 작성할 때는 다음 내용들을 포함해서 작성해.
-        #                     1/ 우리회사에서 만든 식품을 여러 매체에 광고하고 있어. 우리 상품에 대한 분석을 하고 소비자 분석을 하고 싶어.
-        #                     2/ 광고 매출에 대한 인사이트는 보고서의 맨 앞에 \"x억원의 광고 집행 예산을 4개의 매체(예: 아마존, 컬리, 네이버, 쿠팡)에 n일동안 카테고리(신선식품, 간편식, 건강식품)에 대하여 광고를 집행한 결과입니다. 종합해보면..\"과 같은 개요를 작성해줘.
-        #                     3/ 어떤 상품이 어떤 소비자에게 인기가 있었는지도 분석해줘.
-        #                     4/ 통합 분석한 내용을 docx 리포트로 작성해줘. 분석대상은 './2-real-world-agent/completed/data/*' 파일 이야.
-        #                 """
-        # }
         payload = {
             "user_query": """
             나는 옥탱크 뱅크의 데이터 분석가야. 우리 은행의 카드 거래 데이터를 분석하고 있어. 데이터의 종류는 고객 카드 거래 이력 데이터, 가맹점별 거래 데이터야.
@@ -128,6 +119,8 @@ if __name__ == "__main__":
     #########################
     ## modification END    ##
     #########################
+
+    remove_artifact_folder()
 
     # Use full graph streaming execution for real-time streaming with graph structure
     async def run_streaming():

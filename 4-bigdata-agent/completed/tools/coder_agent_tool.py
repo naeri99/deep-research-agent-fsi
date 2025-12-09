@@ -5,8 +5,7 @@ from strands.types.tools import ToolResult, ToolUse
 from utils.strands_sdk_utils import strands_utils
 from prompts.template import apply_prompt_template
 from utils.common_utils import get_message_from_string
-from tools import python_repl_tool, bash_tool
-
+from tools import python_repl_tool, bash_tool, glue_bigdata_tool
 
 # Simple logger setup
 logger = logging.getLogger(__name__)
@@ -29,6 +28,7 @@ TOOL_SPEC = {
     }
 }
 
+
 RESPONSE_FORMAT = "Response from {}:\n\n<response>\n{}\n</response>\n\n*Please execute the next step.*"
 FULL_PLAN_FORMAT = "Here is full plan :\n\n<full_plan>\n{}\n</full_plan>\n\n*Please consider this to select the next step.*"
 CLUES_FORMAT = "Here is clues from {}:\n\n<clues>\n{}\n</clues>\n\n"
@@ -37,6 +37,7 @@ class Colors:
     GREEN = '\033[92m'
     YELLOW = '\033[93m'
     END = '\033[0m'
+
 
 def handle_coder_agent_tool(task: Annotated[str, "The coding task or question that needs to be executed by the coder agent."]):
     """
@@ -71,10 +72,9 @@ def handle_coder_agent_tool(task: Annotated[str, "The coding task or question th
     coder_agent = strands_utils.get_agent(
         agent_name="coder",
         system_prompts=apply_prompt_template(prompt_name="coder", prompt_context={"USER_REQUEST": request_prompt, "FULL_PLAN": full_plan}),
-        agent_type="claude-sonnet-4-5", # claude-sonnet-3-5-v-2, claude-sonnet-3-7, claude-sonnet-4
+        agent_type="claude-sonnet-3-7", # claude-sonnet-3-5-v-2, claude-sonnet-3-7, claude-sonnet-4
         enable_reasoning=False,
-        prompt_cache_info=(True, "default"),  # reasoning agent uses prompt caching
-        tools=[python_repl_tool, bash_tool],
+        tools=[python_repl_tool, bash_tool, glue_bigdata_tool],
         streaming=True  # Enable streaming for consistency
     )
 
@@ -107,6 +107,8 @@ def handle_coder_agent_tool(task: Annotated[str, "The coding task or question th
 
     logger.info(f"\n{Colors.GREEN}Coder Agent Tool completed successfully{Colors.END}")
     return result_text
+
+
 
 # Function name must match tool name
 def coder_agent_tool(tool: ToolUse, **_kwargs: Any) -> ToolResult:

@@ -73,5 +73,5 @@
       "description": "Binary indication that flags an account if a payment is not paid for 30 days or more"
     }
   ],
-  "target" : "/home/ec2-user/workshop/3-real-world-agent/completed/data/ccReport/credit_card.csv"
+  "target" : "s3://testtest-sungsung-testest/credit_card.csv"
 }

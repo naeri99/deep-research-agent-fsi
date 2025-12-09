@@ -61,6 +61,6 @@
       "description": "The satisfaction score that the client has provided for the service"
     }
   ],
-  "target" : "/home/ec2-user/workshop/3-real-world-agent/completed/data/ccReport/customer.csv"
+  "target" : "s3://testtest-sungsung-testest/customer.csv"
 
 }
