@@ -56,44 +56,7 @@ class GlueSparkClient:
         except Exception as e:
             raise Exception(f"Failed to get role from instance profile: {e}")
 
-    # def create_or_reuse_session(self, session_name='spark-session-third'):
-    #     try:
-    #         response = self.glue.get_session(Id=session_name)
-    #         state = response['Session']['Status']
-            
-    #         if state == 'READY':
-    #             print(f"{Colors.GREEN}[DEBUG] Reusing existing session: {session_name}{Colors.END}")
-    #             self.session_id = session_name
-    #             return self.session_id
-    #         elif state in ['FAILED', 'STOPPED']:
-    #             print(f"{Colors.YELLOW}[DEBUG] Session exists but is {state}, deleting and creating new one{Colors.END}")
-    #             self.glue.delete_session(Id=session_name)
-    #     except self.glue.exceptions.EntityNotFoundException:
-    #         print(f"{Colors.BLUE}[DEBUG] Session not found, creating new one{Colors.END}")
-        
-    #     try:
-    #         response = self.glue.create_session(
-    #             Id=session_name,
-    #             Role=self.role_arn,
-    #             Command={'Name': 'glueetl', 'PythonVersion': '3'},
-    #             DefaultArguments={
-    #                 '--enable-glue-datacatalog': 'true',
-    #                 '--job-language': 'python'
-    #             },
-    #             MaxCapacity=10.0,
-    #             Timeout=120
-    #         )
-    #         self.session_id = response['Session']['Id']
-    #     except Exception as e:
-    #         if 'AlreadyExistsException' in str(e):
-    #             print(f"{Colors.YELLOW}[DEBUG] Session already exists, reusing it{Colors.END}")
-    #             self.session_id = session_name
-    #             print(self.session_id)
-    #         else:
-    #             raise
 
-    #     self._wait_for_session_ready()
-    #     return self.session_id
 
     def create_or_reuse_session(self, session_name='spark-session-third'):
         try:
